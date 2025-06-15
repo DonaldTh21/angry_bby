@@ -33,14 +33,14 @@ const LoveSpinner = () => {
   };
 
   const segments = [
-    { text: 'Passion', color: '#ff6b6b' },
-    { text: 'Romance', color: '#ff8e8e' },
-    { text: 'Love', color: '#ff6b6b' },
-    { text: 'Fortune', color: '#ff8e8e' },
-    { text: 'Passion', color: '#ff6b6b' },
-    { text: 'Romance', color: '#ff8e8e' },
-    { text: 'Love', color: '#ff6b6b' },
-    { text: 'Fortune', color: '#ff8e8e' }
+    { text: 'Sing a song', color: '#ff6b6b' },
+    { text: 'Imitate me', color: '#ff8e8e' },
+    { text: 'Dance', color: '#ff6b6b' },
+    { text: 'Kiss', color: '#ff8e8e' },
+    { text: 'Secret fantasy', color: '#ff6b6b' },
+    { text: 'Wildest dreams', color: '#ff8e8e' },
+    { text: 'Rec. Voice Msg.', color: '#ff6b6b' },
+    { text: 'Silly selfie', color: '#ff8e8e' }
   ];
 
   const spinWheel = () => {
@@ -72,7 +72,7 @@ const LoveSpinner = () => {
       <button className="back-button" onClick={() => navigate('/')}>
         ← Back
       </button>
-        <h2>Love Fortune Spinner</h2>
+        <h2>Love Spinner</h2>
         <div className="spinner-wrapper">
           <div 
             className={`spinner-wheel ${isSpinning ? 'spinning' : ''}`}
@@ -105,7 +105,7 @@ const LoveSpinner = () => {
           {isSpinning ? 'Spinning...' : 'Spin for Love'}
         </button>
         <div className={`result-display ${showResult ? 'show' : ''}`}>
-          <h3>Your Love Fortune</h3>
+          <h3>Drum 🥁 roll..</h3>
           <p>{result}</p>
         </div>
       </div>

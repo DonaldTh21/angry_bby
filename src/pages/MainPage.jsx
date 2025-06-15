@@ -4,12 +4,14 @@ import emailjs from '@emailjs/browser';
 import { useNavigate } from 'react-router-dom';
 import LoveSpinnerTrigger from '../components/LoveSpinnerTrigger';
 import LoveSpinner from '../components/LoveSpinner';
+import cryingCatBackground from '../assets/image/crying-little-kitten.png';
 
 const MainPage = () => {
   const navigate = useNavigate();
   const storyRef = useRef();
   const sorryRef = useRef();
   const timelineRef = useRef();
+  const promisesRef = useRef();
   const [complaints, setComplaints] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -51,6 +53,7 @@ const MainPage = () => {
     }
   ]);
   const [showSpinner, setShowSpinner] = useState(false);
+  const complaintFormRef = useRef();
 
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -148,51 +151,95 @@ const MainPage = () => {
         <h2>Our Story</h2>
         <div className="timeline" ref={timelineRef}>
           <div className="timeline-item">
-            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="How we met" />
-            <p><b>How we met</b><br />"It felt like fate the moment our eyes met."</p>
-          </div>
-          <div className="timeline-item">
-            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="When I knew I loved you" />
-            <p><b>When I knew I loved you</b><br />"It was in the quiet moments, when you laughed at my worst jokes."</p>
-          </div>
-          <div className="timeline-item">
-            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80" alt="Our favorite memory" />
-            <p><b>Our favorite memory</b><br />"Dancing in the kitchen, just us and the music."</p>
-          </div>
-          <div className="timeline-item">
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="A silly moment" />
-            <p><b>A silly moment</b><br />"That time we tried to cook together and nearly set off the fire alarm."</p>
-          </div>
-          <div className="timeline-item">
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="A memory I'd relive 10x" />
-            <p><b>A memory I'd relive 10x</b><br />"Watching the sunrise, wrapped up in each other."</p>
-          </div>
-          <div className="timeline-item audio">
-            <iframe 
-              width="100%" 
-              height="200" 
-              src="https://www.youtube.com/embed/6ksOgOnX8q4" 
-              title="Our Song" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
+            <img 
+              src="src/assets/image/how_we_met.webp" 
+              alt="How we met" 
             />
-            <p><i>Our song</i></p>
+            <div className="timeline-content">
+              <p>
+                <b>How we met</b><br />"Funny how I had no clue that day… that you'd end up meaning so much to me."
+              </p>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <img 
+              src="src/assets/image/i_knew_ilu.webp" 
+              alt="When I knew I loved you" 
+            />
+            <div className="timeline-content">
+              <p><b>When I knew I loved you</b><br />"That smile… yep, that's the main culprit."</p>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <img 
+              src="src/assets/image/one_fav_memory.webp" 
+              alt="Our favorite memory" 
+            />
+            <div className="timeline-content">
+              <p><b>One of my favorite memory</b><br />"Hands down, playing WWE with you. Nothing beats our goofy battles and your sneaky moves. 😉"</p>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <img 
+              src="src/assets/image/baiya_aur_behen_ka_kahani.webp" 
+              alt="A silly moment" 
+            />
+            <div className="timeline-content">
+              <p><b>Beiya aur behen ka kahani</b><br />"you as my 'younger sister.' Cute. Innocent. And absolutely the calm before the storm. 😏"</p>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <img 
+              src="src/assets/image/i_live_everyday.webp" 
+              alt="A memory I'd relive 10x" 
+            />
+            <div className="timeline-content">
+              <p><b>No big event, no fancy place</b><br />"If I could hit replay on anything, it'd be any moment I was simply next to you."</p>
+            </div>
           </div>
         </div>
         <button className="section-nav" onClick={() => scrollToSection(sorryRef)}>Next: I'm Sorry ↓</button>
       </section>
 
       {/* I'm Sorry */}
-      <section className="sorry" ref={sorryRef}>
-        <h2>I'm Sorry</h2>
-        <p className="sorry-message">I've hurt you. I drifted. I got distracted. But I never stopped caring — and I never stopped loving you. I'm learning. I'm growing. And I'm here, really here, asking for a chance to do better — and show it every day.</p>
-        <ul className="apologies-list">
-          <li>For not listening closely enough</li>
-          <li>For letting distance grow</li>
-          <li>For not always being present</li>
-        </ul>
+      <section 
+        className="sorry" 
+        ref={sorryRef} 
+        style={{
+          backgroundColor: '#fdfdff', /* A very light off-white to blend with background */
+        }}
+      >
+        <div 
+          style={{
+            backgroundImage: `url(${cryingCatBackground})`,
+            backgroundSize: '100px',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'left bottom',
+            padding: '20px',
+             /* Added for subtlety */
+          }}
+        >
+          <h2>I'm Sorry</h2>
+          <p className="sorry-message">I've hurt you. I drifted. I got distracted. But I never stopped caring — and I never stopped loving you. I'm learning. I'm growing. And I'm here, really here, asking for a chance to do better — and show it every day.</p>
+          <ul className="apologies-list">
+            <li>For not listening closely enough</li>
+            <li>For letting distance grow</li>
+            <li>For not always being present</li>
+            <li>For not being there for you emotionally</li>
+            <li>For not expressing how much I appreciate you, every single day</li>
+            <li>For making you feel alone, even when I was here</li>
+            <li>For not celebrating your little wins and joys enough</li>
+            <li>For being too quiet when I should've spoken love out loud</li>
+            <li>For not reassuring you that you are always enough — more than enough</li>
+            <li>For the times I acted distant when all I wanted was to be close</li>
+            <li>For not being patient when your heart needed time</li>
+          </ul>
 
+        </div>
+      </section>
+
+      {/* Feedback Section */}
+      <section className="feedback-section" ref={complaintFormRef}>
         {/* Complaint Form */}
         <div className="complaint-section">
           <h3>The official Boyfriend Feedback Form</h3>
@@ -241,12 +288,10 @@ const MainPage = () => {
             </div>
           )}
         </div>
-
-        <button className="section-nav" onClick={() => scrollToSection(timelineRef)}>Next: Timeline ↓</button>
       </section>
 
       {/* My Promises */}
-      <section className="promises">
+      <section className="promises" ref={promisesRef}>
         <h2>My Promises</h2>
         <div className="promises-notes">
           <div className="note">I promise to be present.</div>
