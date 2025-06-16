@@ -1,0 +1,103 @@
+@font-face {
+  font-family: 'retrouvailles';
+  src: url('/font/retrouvailles.ttf') format('truetype');
+}
+
+.envelope .envelope-address {
+  font-family: 'retrouvailles', cursive !important;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.bread-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(2px 2px 4px rgba(139, 90, 90, 0.2));
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(5deg);
+  }
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: min(100px, 26.5vw);
+  background: #FFD1DC;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top;
+  transition: transform 1.2s ease;
+  z-index: 0;
+  border: 2px solid #FFB6C1;
+  border-bottom: none;
+  transform: rotateX(0deg);
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(-180deg) translateZ(1px);
+  z-index: 3;
+}
+
+.envelope.open .envelope-seal {
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+}
+
+.envelope.open .envelope-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.envelope.open .envelope-address {
+  opacity: 0;
+}
+
+.envelope.open .card {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 2.5s ease;
+}
+
+.envelope-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 1.2s ease;
+  z-index: 1;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: min(1.5rem, 4vw);
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(255, 182, 193, 0.4);
+  transform: translateY(50px);
+  transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 2.5s ease;
+  border: 2px solid #FFB6C1;
+  opacity: 0;
+} 

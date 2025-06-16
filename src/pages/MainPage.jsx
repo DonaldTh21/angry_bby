@@ -300,28 +300,29 @@ const MainPage = () => {
       <section className="promises" ref={promisesRef}>
         <h2>My Promises</h2>
         <div className="promises-notes">
-          <div className="note">I promise to be present.</div>
-          <div className="note">I promise to make you feel chosen.</div>
-          <div className="note">I promise to flirt with you even when we're old and grumpy.</div>
-          <div className="note">I promise to ask how you are before I vent about my day.</div>
-          <div className="note">I promise to take you on a surprise date when we're back in sync.</div>
+          <div className="note">I promise to never raise my voice unintentionally.</div>
+          <div className="note">I promise to comfort you, not just fix things.</div>
+          <div className="note">I promise to listen with love not just hear, but understand</div>
+          <div className="note">I promise to make you laugh, especially when you're trying not to.</div>
+          <div className="note">I promise to remind you that you're beautiful, even when you don't believe it.</div>
+          <div className="note">I promise to check in with your heart, not just your schedule.</div>
+          <div className="note">I promise to sneak kisses, leave notes, and maybe write a poem or two.</div>
+          <div className="note">I promise to dance with you in the kitchen when no one's watching.</div>
+          <div className="note">I promise to dream out loud with you always 💞.</div>
         </div>
-        <button className="section-nav" onClick={() => scrollToSection(timelineRef)}>Next: Timeline ↓</button>
       </section>
 
       {/* For the Future */}
       <section className="future">
         <h2>For the Future</h2>
         <ul className="goals-list">
-          <li><span role="img" aria-label="star">🌟</span> Cuddle under the stars in Kyoto</li>
-          <li><span role="img" aria-label="star">🌟</span> Watch every Studio Ghibli movie</li>
-          <li><span role="img" aria-label="star">🌟</span> Fight over where to order takeout. Make up. Repeat.</li>
+        <li><span role="img" aria-label="star">🌟</span> To be by your side as soon as I possibly can</li>
+        <li><span role="img" aria-label="star">🌟</span> To make you the happiest version of yourself</li>
+        <li><span role="img" aria-label="star">🌟</span> To keep fighting over food with you and loving every bite of it</li>
+        <li><span role="img" aria-label="star">🌟</span> To hold your hand through storms and sunshine</li>
+        <li><span role="img" aria-label="star">🌟</span> To always cheer for you, even on your quiet days</li>
+        <li><span role="img" aria-label="star">🌟</span> To build a life with you, one silly, sweet, wild memory at a time</li>
         </ul>
-        <form className="goal-form" onSubmit={(e) => e.preventDefault()}>
-          <input placeholder="Add a dream or goal..." />
-          <button type="submit">Add</button>
-        </form>
-        <button className="section-nav" onClick={() => scrollToSection(timelineRef)}>Next: Timeline ↓</button>
       </section>
 
       {/* Love Note */}
@@ -340,11 +341,10 @@ const MainPage = () => {
           />
         </div>
         <div className="cta-links">
-          <a href="https://wa.me/" target="_blank" rel="noopener" className="cta-btn">Message Me (WhatsApp)</a>
-          <a href="mailto:" className="cta-btn">Email Me</a>
-          <a href="https://instagram.com/" target="_blank" rel="noopener" className="cta-btn">DM on IG</a>
+          <a href="https://wa.me/+918415014899" target="_blank" rel="noopener" className="cta-btn">💬 Message Me</a>
+          <a href="mailto:donaldth18@gmail.com" className="cta-btn">📧 Email Me</a>
+          <a href="tel:+918415014899" target="_blank" rel="noopener" className="cta-btn">📞 Call me</a>
         </div>
-        <button className="section-nav" onClick={() => scrollToSection(timelineRef)}>Next: Timeline ↓</button>
       </section>
 
       {/* Love Letter Archive */}

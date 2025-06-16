@@ -224,11 +224,29 @@ body, html, #root, .fhfth-root {
 }
 
 .promises-notes {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
   justify-content: center;
   margin: 2rem 0 1rem 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+.promises-notes > *:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 480px) {
+  .promises-notes {
+    gap: 0.8rem;
+    padding: 0 0.5rem;
+  }
 }
 
 .note {
@@ -348,7 +366,7 @@ body, html, #root, .fhfth-root {
 
 .cta-btn {
   background: #b85c8c;
-  color: #fff;
+  color: #fff !important;
   border: none;
   border-radius: 2rem;
   padding: 0.7rem 1.7rem;
@@ -2550,30 +2568,6 @@ input:focus, textarea:focus {
   transition: opacity 0.3s ease;
   width: auto;
   max-width: 80%;
-}
-
-.envelope:hover .envelope-flap {
-  transform: rotateX(-180deg) translateZ(1px);
-  z-index: 3;
-}
-
-.envelope:hover .envelope-seal {
-  transform: translate(-50%, -50%) scale(0.8);
-  opacity: 0;
-}
-
-.envelope:hover .envelope-content {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.envelope:hover .envelope-address {
-  opacity: 0;
-}
-
-.envelope:hover .card {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 .card-header h3 {

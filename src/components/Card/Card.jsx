@@ -2,6 +2,7 @@ import CardHeader from './CardHeader';
 import CardMessage from './CardMessage';
 import SecretMessage from './SecretMessage';
 import CardHearts from './CardHearts';
+import './Card.css';
 
 const Card = ({ isOpen }) => (
   <div className="card">

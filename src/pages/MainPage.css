@@ -37,7 +37,7 @@
 .fhfth-root .note,
 .fhfth-root .goals-list li span,
 .fhfth-root .complaint-section h3 {
-  font-family: 'Retrouvailles', serif;
+  font-family: 'retrouvailles', serif;
   font-weight: 600;
   color: #2c3e50;
 }
@@ -141,7 +141,7 @@ h2 {
 }
 
 .letter-card h3 {
-  font-family: 'Retrouvailles', serif;
+  font-family: 'retrouvailles', serif;
 }
 
 /* Complaints section */
