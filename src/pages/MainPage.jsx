@@ -5,6 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import LoveSpinnerTrigger from '../components/LoveSpinnerTrigger';
 import LoveSpinner from '../components/LoveSpinner';
 import cryingCatBackground from '../assets/image/crying-little-kitten.png';
+import howWeMetImage from '../assets/image/how_we_met.webp';
+import iKnewILoveYouImage from '../assets/image/i_knew_ilu.webp';
+import oneFavMemoryImage from '../assets/image/one_fav_memory.webp';
+import baiyaAurBehenImage from '../assets/image/baiya_aur_behen_ka_kahani.webp';
+import iLiveEverydayImage from '../assets/image/i_live_everyday.webp';
+import './MainPage.css';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -152,7 +158,7 @@ const MainPage = () => {
         <div className="timeline" ref={timelineRef}>
           <div className="timeline-item">
             <img 
-              src="src/assets/image/how_we_met.webp" 
+              src={howWeMetImage}
               alt="How we met" 
             />
             <div className="timeline-content">
@@ -163,7 +169,7 @@ const MainPage = () => {
           </div>
           <div className="timeline-item">
             <img 
-              src="src/assets/image/i_knew_ilu.webp" 
+              src={iKnewILoveYouImage}
               alt="When I knew I loved you" 
             />
             <div className="timeline-content">
@@ -172,7 +178,7 @@ const MainPage = () => {
           </div>
           <div className="timeline-item">
             <img 
-              src="src/assets/image/one_fav_memory.webp" 
+              src={oneFavMemoryImage}
               alt="Our favorite memory" 
             />
             <div className="timeline-content">
@@ -181,7 +187,7 @@ const MainPage = () => {
           </div>
           <div className="timeline-item">
             <img 
-              src="src/assets/image/baiya_aur_behen_ka_kahani.webp" 
+              src={baiyaAurBehenImage}
               alt="A silly moment" 
             />
             <div className="timeline-content">
@@ -190,7 +196,7 @@ const MainPage = () => {
           </div>
           <div className="timeline-item">
             <img 
-              src="src/assets/image/i_live_everyday.webp" 
+              src={iLiveEverydayImage}
               alt="A memory I'd relive 10x" 
             />
             <div className="timeline-content">

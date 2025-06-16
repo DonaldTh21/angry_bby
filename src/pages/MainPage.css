@@ -1,0 +1,194 @@
+/* Font declarations */
+@font-face {
+  font-family: 'retrouvailles';
+  src: url('/font/retrouvailles.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Crimson Pro';
+  src: url('/font/CrimsonPro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Base styles */
+.fhfth-root,
+.fhfth-root p,
+.fhfth-root span,
+.fhfth-root div,
+.fhfth-root li,
+.fhfth-root textarea,
+.fhfth-root input,
+.fhfth-root select,
+.fhfth-root button:not(.cta):not(.section-nav) {
+  font-family: 'Crimson Pro', serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Headers */
+.fhfth-root h1,
+.fhfth-root h2,
+.fhfth-root h3,
+.fhfth-root .letter-header h3,
+.fhfth-root .timeline-content b,
+.fhfth-root .note,
+.fhfth-root .goals-list li span,
+.fhfth-root .complaint-section h3 {
+  font-family: 'Retrouvailles', serif;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Image styles */
+.timeline-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Timeline styles */
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.timeline-item {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content {
+  padding: 1rem;
+}
+
+.timeline-content p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Section styles */
+section {
+  padding: 4rem 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Buttons */
+.cta, .section-nav {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Crimson Pro', serif;
+}
+
+.cta:hover, .section-nav:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Love Letters */
+.letter-card {
+  font-family: 'Crimson Pro', serif;
+}
+
+.letter-card h3 {
+  font-family: 'Retrouvailles', serif;
+}
+
+/* Complaints section */
+.complaint-section {
+  font-family: 'Crimson Pro', serif;
+}
+
+.complaint-input,
+.complaint-type,
+.complaint-submit {
+  font-family: 'Crimson Pro', serif;
+}
+
+/* Future section */
+.goals-list li {
+  font-family: 'Crimson Pro', serif;
+}
+
+.goal-form input {
+  font-family: 'Crimson Pro', serif;
+}
+
+/* Love Note section */
+.love-text {
+  font-family: 'Crimson Pro', serif;
+}
+
+/* Footer */
+.main-footer {
+  font-family: 'Crimson Pro', serif;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .timeline-item {
+    padding: 0.75rem;
+  }
+  
+  section {
+    padding: 2rem 1rem;
+  }
+} 
