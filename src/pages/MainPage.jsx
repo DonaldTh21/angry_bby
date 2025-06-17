@@ -31,35 +31,38 @@ const MainPage = () => {
   const [loveLetters] = useState([
     {
       id: 1,
-      title: "Our First Date",
-      content: "Remember when we first met? The way your eyes lit up when you smiled...",
-      date: "2024-02-14",
+      title: "Whatever It Was, It Was You",
+      content: "Maybe it was your laugh, or your eyes, or your smile. Maybe it was your hair, or voice, personality, or watching you talk.But whatever it was, it made me fall pretty damn hard.",
+      date: "15-12-2023",
       mood: "romantic"
     },
     {
       id: 2,
-      title: "After Our First Fight",
-      content: "I know we had our first disagreement today, but it only made me realize how much I care...",
-      date: "2024-02-15",
-      mood: "apologetic"
+      title: "The World of Maybes",
+      content: "Feels like i'm wondering in world full of maybes... She was busy or that's what I told myself. But deep down, it felt like maybe she didn't want to talk to me. And that 'maybe' hurt more than a no.",
+      date: "01-01-2024",
+      mood: "sad"
     },
     {
       id: 3,
-      title: "Just Because",
-      content: "I wanted to tell you how much I appreciate your patience and understanding...",
-      date: "2024-02-16",
-      mood: "grateful"
+      title: "I Don’t Want to Be a Bother… But",
+      content: "I’m sorry if I startled you.Lately, I find myself thinking about you more than I probably should.I’ve been wanting to see you… wondering what you’re up to,waiting for your message… or just your name lighting up my screen.Sometimes I think about calling,but then I worry what if it’s the wrong moment? What if I’m a little too much,on the wrong day? Truth is… I miss you.Maybe more than I know how to say.Maybe I’m just overthinking.But still here I am.",
+      date: "16-03-2024",
+      mood: "sad"
     },
     {
       id: 4,
-      title: "Missing You",
-      content: "Every moment without you feels like a lifetime. I can't wait to see your smile again...",
+      title: "I love you",
+      content: "I’m sorry for everything that hurt.I didn’t mean it.I love you more than I can say, more than I’ve said. More than I’ve known how to say. More than I’ve shown. And I hate that sometimes love isn’t enough if it doesn’t show up right. But I’m still here. Learning. Loving. Waiting.",
       date: "2024-02-17",
       mood: "romantic"
     }
   ]);
   const [showSpinner, setShowSpinner] = useState(false);
   const complaintFormRef = useRef();
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef(null);
+  const thumbnailUrl = "https://placehold.co/600x400/fdfdff/ff69b4?text=Our+Love+Story";
 
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -128,6 +131,21 @@ const MainPage = () => {
 
   const handleCloseSpinner = () => {
     setShowSpinner(false);
+  };
+
+  const handleThumbnailClick = () => {
+    setIsVideoPlaying(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+      // Request fullscreen
+      if (videoRef.current.requestFullscreen) {
+        videoRef.current.requestFullscreen();
+      } else if (videoRef.current.webkitRequestFullscreen) { // Safari
+        videoRef.current.webkitRequestFullscreen();
+      } else if (videoRef.current.msRequestFullscreen) { // IE11
+        videoRef.current.msRequestFullscreen();
+      }
+    }
   };
 
   return (
@@ -330,15 +348,85 @@ const MainPage = () => {
         <h2>Love Note</h2>
         <textarea className="love-text" value={"You don't have to forgive me today. But I'll be here. Ready whenever you are."} readOnly />
         <div className="media-embed">
-          <iframe 
-            width="100%" 
-            height="315" 
-            src="https://www.youtube.com/embed/6ksOgOnX8q4" 
-            title="Love Song" 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen
-          />
+          {!isVideoPlaying ? (
+            <div 
+              className="video-thumbnail" 
+              onClick={handleThumbnailClick}
+              style={{
+                width: '100%',
+                height: '315px',
+                backgroundImage: `url(${thumbnailUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                cursor: 'pointer',
+                position: 'relative',
+                borderRadius: '12px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                transition: 'transform 0.3s ease',
+                ':hover': {
+                  transform: 'scale(1.02)'
+                }
+              }}
+            >
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '80px',
+                  height: '80px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 4px 12px rgba(255, 105, 180, 0.3)',
+                  transition: 'all 0.3s ease',
+                  animation: 'pulse 2s infinite'
+                }}
+              >
+                <span style={{ 
+                  fontSize: '40px',
+                  filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))',
+                  animation: 'bounce 1s infinite'
+                }}>💝</span>
+              </div>
+            </div>
+          ) : (
+            <video 
+              ref={videoRef}
+              width="100%" 
+              height="315" 
+              controls
+              className="love-video"
+              preload="auto"
+              style={{
+                borderRadius: '12px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+              }}
+              onError={(e) => {
+                console.error('Video playback error:', e);
+                alert('There was an error loading the video. Please check your internet connection and try again.');
+              }}
+              onEnded={() => {
+                // Exit fullscreen when video ends
+                if (document.exitFullscreen) {
+                  document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { // Safari
+                  document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE11
+                  document.msExitFullscreen();
+                }
+              }}
+            >
+              <source 
+                src="https://pub-473b9b50fba8472bb3666a40d0f26c67.r2.dev/Timeline%201.mp4" 
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          )}
         </div>
         <div className="cta-links">
           <a href="https://wa.me/+918415014899" target="_blank" rel="noopener" className="cta-btn">💬 Message Me</a>
@@ -359,7 +447,12 @@ const MainPage = () => {
                   <span className="letter-date">{letter.date}</span>
                 </div>
                 <p className="letter-content">{letter.content}</p>
-                <div className="letter-mood-tag">{letter.mood}</div>
+                <div className="letter-mood-tag">
+                  {letter.mood === 'romantic' && '💖 Romantic'}
+                  {letter.mood === 'apologetic' && '🥺 Apologetic'}
+                  {letter.mood === 'grateful' && '🙏 Grateful'}
+                  {letter.mood === 'sad' && '💔 Sad'}
+                </div>
               </div>
             ))}
           </div>
@@ -383,6 +476,38 @@ const MainPage = () => {
           <p>Made with 💖 for you</p>
         </div>
       </footer>
+
+      <style>
+        {`
+          @keyframes pulse {
+            0% {
+              transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+              transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% {
+              transform: translate(-50%, -50%) scale(1);
+            }
+          }
+          @keyframes bounce {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-5px);
+            }
+          }
+          .letter-card.sad {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid #6c757d;
+          }
+          .letter-card.sad .letter-mood-tag {
+            background-color: #6c757d;
+            color: white;
+          }
+        `}
+      </style>
     </div>
   );
 };
