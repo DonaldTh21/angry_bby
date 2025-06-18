@@ -12,6 +12,7 @@ function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
   const [isAudioLoaded, setIsAudioLoaded] = useState(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -30,6 +31,10 @@ function App() {
     audio.addEventListener('error', (e) => {
       console.error('Error loading audio:', e);
     });
+
+    // Track playing state
+    audio.addEventListener('play', () => setIsAudioPlaying(true));
+    audio.addEventListener('pause', () => setIsAudioPlaying(false));
 
     audioRef.current = audio;
 
@@ -70,6 +75,26 @@ function App() {
     }
   };
 
+  const pauseAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
+  };
+
+  const resumeAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch(error => console.error('Error resuming audio:', error));
+    }
+  };
+
+  const toggleAudio = () => {
+    if (isAudioPlaying) {
+      pauseAudio();
+    } else {
+      resumeAudio();
+    }
+  };
+
   return (
     <Router>
       <Routes>
@@ -82,7 +107,12 @@ function App() {
                 onSecondClick={handleSecondClick}
               />
             ) : (
-              <MainPage />
+              <MainPage 
+                isAudioPlaying={isAudioPlaying}
+                onPauseAudio={pauseAudio}
+                onResumeAudio={resumeAudio}
+                onToggleAudio={toggleAudio}
+              />
             )}
           </div>
         } />

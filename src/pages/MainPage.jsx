@@ -12,7 +12,7 @@ import baiyaAurBehenImage from '../assets/image/baiya_aur_behen_ka_kahani.webp';
 import iLiveEverydayImage from '../assets/image/i_live_everyday.webp';
 import './MainPage.css';
 
-const MainPage = () => {
+const MainPage = ({ isAudioPlaying, onPauseAudio, onResumeAudio, onToggleAudio }) => {
   const navigate = useNavigate();
   const storyRef = useRef();
   const sorryRef = useRef();
@@ -45,15 +45,15 @@ const MainPage = () => {
     },
     {
       id: 3,
-      title: "I Don’t Want to Be a Bother… But",
-      content: "I’m sorry if I startled you.Lately, I find myself thinking about you more than I probably should.I’ve been wanting to see you… wondering what you’re up to,waiting for your message… or just your name lighting up my screen.Sometimes I think about calling,but then I worry what if it’s the wrong moment? What if I’m a little too much,on the wrong day? Truth is… I miss you.Maybe more than I know how to say.Maybe I’m just overthinking.But still here I am.",
+      title: "I Don't Want to Be a Bother… But",
+      content: "I'm sorry if I startled you.Lately, I find myself thinking about you more than I probably should.I've been wanting to see you… wondering what you're up to,waiting for your message… or just your name lighting up my screen.Sometimes I think about calling,but then I worry what if it's the wrong moment? What if I'm a little too much,on the wrong day? Truth is… I miss you.Maybe more than I know how to say.Maybe I'm just overthinking.But still here I am.",
       date: "16-03-2024",
       mood: "sad"
     },
     {
       id: 4,
       title: "I love you",
-      content: "I’m sorry for everything that hurt.I didn’t mean it.I love you more than I can say, more than I’ve said. More than I’ve known how to say. More than I’ve shown. And I hate that sometimes love isn’t enough if it doesn’t show up right. But I’m still here. Learning. Loving. Waiting.",
+      content: "I'm sorry for everything that hurt.I didn't mean it.I love you more than I can say, more than I've said. More than I've known how to say. More than I've shown. And I hate that sometimes love isn't enough if it doesn't show up right. But I'm still here. Learning. Loving. Waiting.",
       date: "2024-02-17",
       mood: "romantic"
     }
@@ -135,6 +135,8 @@ const MainPage = () => {
 
   const handleThumbnailClick = () => {
     setIsVideoPlaying(true);
+    // Pause background music when video starts
+    onPauseAudio();
     if (videoRef.current) {
       videoRef.current.play();
       // Request fullscreen
@@ -148,8 +150,30 @@ const MainPage = () => {
     }
   };
 
+  const handleVideoEnded = () => {
+    // Resume background music when video ends
+    onResumeAudio();
+    // Exit fullscreen when video ends
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) { // Safari
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE11
+      document.msExitFullscreen();
+    }
+  };
+
   return (
     <div className="fhfth-root">
+
+      {/* Music Control Button */}
+      <button 
+        className="music-control-btn"
+        onClick={onToggleAudio}
+        title={isAudioPlaying ? "Pause Music" : "Play Music"}
+      >
+        {isAudioPlaying ? "🎧" : "💝"}
+      </button>
 
       {/* Homepage */}
       <section className="hero" style={{ backgroundImage: `url(${BG_IMAGE})` }}>
@@ -409,16 +433,7 @@ const MainPage = () => {
                 console.error('Video playback error:', e);
                 alert('There was an error loading the video. Please check your internet connection and try again.');
               }}
-              onEnded={() => {
-                // Exit fullscreen when video ends
-                if (document.exitFullscreen) {
-                  document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) { // Safari
-                  document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { // IE11
-                  document.msExitFullscreen();
-                }
-              }}
+              onEnded={handleVideoEnded}
             >
               <source 
                 src="https://pub-473b9b50fba8472bb3666a40d0f26c67.r2.dev/Timeline%201.mp4" 
@@ -505,6 +520,47 @@ const MainPage = () => {
           .letter-card.sad .letter-mood-tag {
             background-color: #6c757d;
             color: white;
+          }
+          .music-control-btn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #ff69b4;
+            background: linear-gradient(135deg, #fff0f5, #ffe4e8);
+            color: #ff69b4;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(255, 105, 180, 0.2);
+            animation: ${isAudioPlaying ? 'heartbeat 1.5s infinite' : 'float 3s ease-in-out infinite'};
+            backdrop-filter: blur(5px);
+          }
+          .music-control-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+            border-color: #e48abf;
+            background: linear-gradient(135deg, #ffe4e8, #ffd1dc);
+          }
+          .music-control-btn:active {
+            transform: scale(0.95);
+          }
+          @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.05); }
+            50% { transform: scale(1.1); }
+            75% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+          }
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
           }
         `}
       </style>
