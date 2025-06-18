@@ -63,7 +63,7 @@ const MainPage = ({ isAudioPlaying, onPauseAudio, onResumeAudio, onToggleAudio }
     name: '',
     email: '',
     message: '',
-    category: 'general'
+    category: 'hurt'
   });
   const [showEasterEgg, setShowEasterEgg] = useState(false);
   const [loveLetters] = useState([
