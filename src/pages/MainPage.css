@@ -58,6 +58,9 @@
   margin: 0 auto;
   padding: 40px 20px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .memory-swiper {
@@ -144,6 +147,27 @@
 .swiper-slide-shadow-bottom {
   display: none !important;
   background-image: none !important;
+}
+
+/* Swiper centering */
+.swiper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
 }
 
 /* Media queries */

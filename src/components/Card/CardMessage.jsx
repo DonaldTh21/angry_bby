@@ -1,3 +1,5 @@
+import React from 'react';
+
 const CardMessage = () => (
   <p className="card-message">
     Every moment with you feels like a beautiful dream come true. 

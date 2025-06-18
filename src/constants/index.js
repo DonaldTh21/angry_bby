@@ -1,4 +1,7 @@
-export const MUSIC_URL = new URL('../assets/Kasoor.mp3', import.meta.url).href;
+import kasoorAudio from '../assets/Kasoor.mp3';
+
+export const MUSIC_URL = kasoorAudio;
+export const MUSIC_URL_FALLBACK = '/sounds/Kasoor.mp3';
 export const BG_IMAGE = 'https://images.unsplash.com/photo-1465101162946-4377e57745c3?auto=format&fit=crop&w=2078&q=80';
 
 export const INITIAL_APOLOGIES = [

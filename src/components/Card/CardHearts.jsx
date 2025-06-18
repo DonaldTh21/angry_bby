@@ -1,3 +1,5 @@
+import React from 'react';
+
 const CardHearts = () => (
   <div className="card-hearts">
     <span className="animated-heart">💖</span>

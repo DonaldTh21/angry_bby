@@ -326,16 +326,23 @@ body, html, #root, .fhfth-root {
   background: #ffd1dc;
   padding: 2.5rem 1rem 2rem 1rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .love-note h2 {
   color: #b85c8c;
+  margin-bottom: 2rem;
 }
 
 .love-text {
   width: 90vw;
   max-width: 400px;
-  min-height: 80px;
+  min-height: 60px;
   border-radius: 1rem;
   border: 1px solid #ffd1dc;
   padding: 1rem;
@@ -345,6 +352,8 @@ body, html, #root, .fhfth-root {
   background: #fff6f6;
   color: #b85c8c;
   resize: none;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .media-embed {
@@ -353,6 +362,8 @@ body, html, #root, .fhfth-root {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 600px;
 }
 
 .cta-links {
@@ -360,6 +371,25 @@ body, html, #root, .fhfth-root {
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-links .button-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.cta-links .single-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
 }
 
 .cta-btn {
@@ -957,9 +987,7 @@ section.visible {
   height: 444px;
   }
 
-  .timeline-item img {
-    /* Removed max-width: 120px; */
-  }
+
 
   .section-nav {
     font-size: 0.95rem;
@@ -1359,6 +1387,7 @@ input:focus, textarea:focus {
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   width: 90%;
+  box-sizing: border-box;
 }
 
 .complaint-section h3 {
@@ -1510,6 +1539,119 @@ input:focus, textarea:focus {
 
   .complaint-submit {
     width: 100%;
+  }
+  
+  /* Enhanced mobile styling for complaint section */
+  .complaint-section {
+    margin: 0.5rem auto;
+    padding: 0.8rem;
+    width: 98%;
+    max-width: 400px;
+    box-sizing: border-box;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .complaint-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .complaint-form {
+    padding: 1.5rem;
+  }
+  
+  .complaint-input {
+    min-height: 100px;
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+  
+  .complaint-type {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    min-width: 150px;
+  }
+  
+  .complaint-submit {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablet specific styling */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .complaint-section {
+    margin: 1.5rem auto;
+    padding: 1.2rem;
+    width: 92%;
+    max-width: 550px;
+  }
+  
+  .complaint-section h3 {
+    font-size: 1.3rem;
+  }
+  
+  .complaint-form {
+    padding: 1.8rem;
+  }
+  
+  .complaint-input {
+    min-height: 110px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .complaint-section {
+    margin: 0.5rem auto;
+    padding: 0.8rem;
+    width: 98%;
+    max-width: 400px;
+    box-sizing: border-box;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .complaint-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .complaint-form {
+    padding: 1rem;
+  }
+  
+  .complaint-input {
+    min-height: 80px;
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+  
+  .complaint-type {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    min-width: 120px;
+  }
+  
+  .complaint-submit {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .complaint-item {
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .complaint-date {
+    font-size: 0.8rem;
+  }
+  
+  .complaint-item p {
+    font-size: 0.9rem;
   }
 }
 
@@ -1779,6 +1921,7 @@ input:focus, textarea:focus {
   background: linear-gradient(135deg, #ffe3e3 0%, #ffd1d1 100%);
   padding: 2rem;
   position: relative;
+  font-family: 'Crimson Pro', serif;
 }
 
 .back-button {
@@ -1793,6 +1936,7 @@ input:focus, textarea:focus {
   padding: 0.5rem 1rem;
   border-radius: 20px;
   transition: all 0.3s ease;
+  font-family: 'Crimson Pro', serif;
 }
 
 .back-button:hover {
@@ -1809,6 +1953,8 @@ input:focus, textarea:focus {
   color: #b85c8c;
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  font-family: 'retrouvailles', serif;
+  font-weight: 600;
 }
 
 .easter-egg-header p {
@@ -1817,6 +1963,7 @@ input:focus, textarea:focus {
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+  font-family: 'Crimson Pro', serif;
 }
 
 .easter-egg-section {
@@ -1832,6 +1979,8 @@ input:focus, textarea:focus {
   color: #b85c8c;
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
+  font-family: 'retrouvailles', serif;
+  font-weight: 600;
 }
 
 .thought-bubble {
@@ -1860,6 +2009,7 @@ input:focus, textarea:focus {
   font-size: 1.1rem;
   line-height: 1.6;
   margin: 0;
+  font-family: 'Crimson Pro', serif;
 }
 
 .love-list {
@@ -1897,6 +2047,7 @@ input:focus, textarea:focus {
   color: #6d375a;
   margin: 0;
   font-size: 1.1rem;
+  font-family: 'Crimson Pro', serif;
 }
 
 .video-message {
@@ -1911,12 +2062,14 @@ input:focus, textarea:focus {
   font-size: 1.2rem;
   line-height: 1.6;
   margin: 1rem 0;
+  font-family: 'Crimson Pro', serif;
 }
 
 .video-message .alternative {
   color: #b85c8c;
   font-style: italic;
   margin: 2rem 0;
+  font-family: 'Crimson Pro', serif;
 }
 
 .mad-button {
@@ -1930,6 +2083,8 @@ input:focus, textarea:focus {
   transition: all 0.3s ease;
   width: 100%;
   margin-bottom: 1rem;
+  font-family: 'Crimson Pro', serif;
+  font-weight: bold;
 }
 
 .mad-button:hover {
@@ -1949,6 +2104,7 @@ input:focus, textarea:focus {
   color: #6d375a;
   font-size: 1.2rem;
   margin-bottom: 2rem;
+  font-family: 'Crimson Pro', serif;
 }
 
 .cute-gif {
@@ -2015,6 +2171,7 @@ input:focus, textarea:focus {
   margin-top: 1rem;
   color: #6d375a;
   font-style: italic;
+  font-family: 'Crimson Pro', serif;
 }
 
 .header {
@@ -2597,5 +2754,374 @@ input:focus, textarea:focus {
   font-size: 1.3rem;
   margin-bottom: 8px;
   color: #1a1a1a;
+}
+
+/* Font declarations */
+@font-face {
+  font-family: 'retrouvailles';
+  src: url('/font/retrouvailles.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Crimson Pro';
+  src: url('/font/CrimsonPro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Feedback Section Centering */
+.feedback-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 1rem;
+  margin: 0 auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive styling for feedback section */
+@media (max-width: 768px) {
+  .feedback-section {
+    padding: 1rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-section {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile and Tablet Responsive Styles for Love Note Section */
+@media (max-width: 768px) {
+  .love-note {
+    padding: 2rem 1rem 1.5rem 1rem;
+    min-height: 70vh;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .love-note h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .love-text {
+    width: 95vw;
+    max-width: 350px;
+    min-height: 70px;
+    font-size: 1rem;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .media-embed {
+    max-width: 95vw;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-links {
+    max-width: 95vw;
+    gap: 0.8rem;
+  }
+
+  .cta-links .button-row {
+    max-width: 320px;
+    gap: 0.8rem;
+  }
+
+  .cta-links .single-button {
+    max-width: 320px;
+  }
+
+  .cta-btn {
+    width: 100%;
+    max-width: 150px;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .love-note {
+    padding: 1.5rem 0.8rem 1rem 0.8rem;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .love-note h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .love-text {
+    width: 98vw;
+    max-width: 320px;
+    min-height: 65px;
+    font-size: 0.95rem;
+    padding: 0.7rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .media-embed {
+    max-width: 98vw;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .cta-links {
+    max-width: 98vw;
+    gap: 0.6rem;
+  }
+
+  .cta-links .button-row {
+    max-width: 280px;
+    gap: 0.6rem;
+  }
+
+  .cta-links .single-button {
+    max-width: 280px;
+  }
+
+  .cta-btn {
+    max-width: 130px;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .love-note {
+    padding: 3rem 2rem 2.5rem 2rem;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .love-note h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .love-text {
+    width: 85vw;
+    max-width: 500px;
+    min-height: 80px;
+    font-size: 1.15rem;
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+  }
+
+  .media-embed {
+    max-width: 700px;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-links {
+    max-width: 700px;
+    gap: 1.2rem;
+  }
+
+  .cta-links .button-row {
+    max-width: 450px;
+    gap: 1.2rem;
+  }
+
+  .cta-links .single-button {
+    max-width: 450px;
+  }
+
+  .cta-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .love-note {
+    padding: 4rem 2rem 3rem 2rem;
+    gap: 2.5rem;
+    width: 100%;
+  }
+
+  .love-note h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .love-text {
+    width: 80vw;
+    max-width: 600px;
+    min-height: 90px;
+    font-size: 1.2rem;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+  }
+
+  .media-embed {
+    max-width: 800px;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-links {
+    max-width: 800px;
+    gap: 1.5rem;
+  }
+
+  .cta-links .button-row {
+    max-width: 500px;
+    gap: 1.5rem;
+  }
+
+  .cta-links .single-button {
+    max-width: 500px;
+  }
+
+  .cta-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Play Button for Video Thumbnail */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.play-button span {
+  font-size: 40px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  animation: bounce 1s infinite;
+}
+
+/* Sorry Content */
+.sorry-content {
+  background-image: url('../assets/image/crying-little-kitten.png');
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  padding: 20px;
+  background-color: #fdfdff;
+}
+
+/* Letter Card Sad Style */
+.letter-card.sad {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-left: 4px solid #6c757d;
+}
+
+.letter-card.sad .letter-mood-tag {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Music Control Button */
+.music-control-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ff69b4;
+  background: linear-gradient(135deg, #fff0f5, #ffe4e8);
+  color: #ff69b4;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(255, 105, 180, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.music-control-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+  border-color: #e48abf;
+  background: linear-gradient(135deg, #ffe4e8, #ffd1dc);
+}
+
+.music-control-btn:active {
+  transform: scale(0.95);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.05); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Music button animation based on state */
+.music-control-btn.playing {
+  animation: heartbeat 1.5s infinite;
+}
+
+.music-control-btn:not(.playing) {
+  animation: float 3s ease-in-out infinite;
 }
 

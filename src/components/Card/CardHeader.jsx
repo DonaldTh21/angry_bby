@@ -1,3 +1,5 @@
+import React from 'react';
+
 const CardHeader = () => (
   <div className="card-header">
     <span className="animated-sparkle">✨</span>

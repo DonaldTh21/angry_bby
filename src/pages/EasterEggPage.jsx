@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// Dynamic data configuration
+// Assets
+import surpriseVideo from '../assets/IMG_2491.mp4';
+
+// Data
 const easterEggData = {
   header: {
     title: "You found it.",
@@ -27,14 +30,14 @@ const easterEggData = {
       title: "❤️ Tiny Ways I Love You",
       type: 'love-list',
       content: [
-        "The way your voice softens when you’re sleepy",
-    "The smile I get when your name lights up my screen",
-    "I know your laugh in all its variations the polite one you use when meeting new people, the gentle one when you’re happy, and that wild, comfortable, monstrous laugh you only let out when you feel safe. And I love them all.",
-    "The way I hear your reactions in my head when something funny happens",
-    "That your happiness genuinely makes me happy and rooting for you",
-    "The way your silence still feels like something I want to cheer you up.",
-    "I find you beautiful all the time but especially in the mornings, half-asleep, curled beside me. I love watching you sleep, like peace decided to stay a little longer.",
-    "It hurts me more than I can explain… to see you cry."
+        "The way your voice softens when you're sleepy",
+        "The smile I get when your name lights up my screen",
+        "I know your laugh in all its variations the polite one you use when meeting new people, the gentle one when you're happy, and that wild, comfortable, monstrous laugh you only let out when you feel safe. And I love them all.",
+        "The way I hear your reactions in my head when something funny happens",
+        "That your happiness genuinely makes me happy and rooting for you",
+        "The way your silence still feels like something I want to cheer you up.",
+        "I find you beautiful all the time but especially in the mornings, half-asleep, curled beside me. I love watching you sleep, like peace decided to stay a little longer.",
+        "It hurts me more than I can explain… to see you cry."
       ]
     },
     {
@@ -42,7 +45,7 @@ const easterEggData = {
       title: "🎥 A Surprise Video",
       type: 'video',
       content: {
-        src: "/src/assets/IMG_2491.mp4",
+        src: surpriseVideo,
         caption: "When you're trying to be angry but can't stop being cute 😅"
       }
     },
@@ -90,8 +93,15 @@ const buttonStyles = {
 
 const EasterEggPage = () => {
   const navigate = useNavigate();
+  
+  // State
   const [showMadSection, setShowMadSection] = useState(false);
   const [buttonText, setButtonText] = useState(easterEggData.sections[3].content.buttonStates[0]);
+
+  // Event handlers
+  const handleBackClick = () => {
+    navigate('/');
+  };
 
   const handleMadButtonClick = () => {
     const currentIndex = easterEggData.sections[3].content.buttonStates.indexOf(buttonText);
@@ -104,78 +114,81 @@ const EasterEggPage = () => {
     }
   };
 
+  // Utility functions
   const getButtonStyle = () => {
     return buttonStyles[buttonText] || buttonStyles[easterEggData.sections[3].content.buttonStates[0]];
   };
 
+  // Render functions
+  const renderThoughtBubbles = (content) => (
+    <div className="thought-bubbles">
+      {content.map((thought, index) => (
+        <div key={index} className="thought-bubble">
+          <p>"{thought}"</p>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderLoveList = (content) => (
+    <div className="love-list">
+      {content.map((loveItem, index) => (
+        <div key={index} className="love-item">
+          <span className="sparkle">✨</span>
+          <p>{loveItem}</p>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderVideo = (content) => (
+    <div className="video-container">
+      <video 
+        controls 
+        className="meme-video"
+        poster={content.poster}
+      >
+        <source src={content.src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <p className="video-caption">{content.caption}</p>
+    </div>
+  );
+
+  const renderMadButton = (content) => (
+    <div className="mad-section">
+      <button 
+        className="mad-button"
+        onClick={handleMadButtonClick}
+        style={getButtonStyle()}
+      >
+        {buttonText}
+      </button>
+      
+      {showMadSection && (
+        <div className="mad-message">
+          <p>"{content.finalMessage}"</p>
+          <div className="cute-gif">
+            <img 
+              src={content.gifUrl} 
+              alt={content.gifAlt}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+
   const renderSection = (section) => {
     switch (section.type) {
       case 'thought-bubbles':
-        return (
-          <div className="thought-bubbles">
-            {section.content.map((thought, index) => (
-              <div key={index} className="thought-bubble">
-                <p>"{thought}"</p>
-              </div>
-            ))}
-          </div>
-        );
-
+        return renderThoughtBubbles(section.content);
       case 'love-list':
-        return (
-          <div className="love-list">
-            {section.content.map((loveItem, index) => (
-              <div key={index} className="love-item">
-                <span className="sparkle">✨</span>
-                <p>{loveItem}</p>
-              </div>
-            ))}
-          </div>
-        );
-
+        return renderLoveList(section.content);
       case 'video':
-        return (
-          <div className="video-container">
-            <video 
-              controls 
-              className="meme-video"
-              poster={section.content.poster}
-            >
-              <source 
-                src={section.content.src} 
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-            <p className="video-caption">{section.content.caption}</p>
-          </div>
-        );
-
+        return renderVideo(section.content);
       case 'mad-button':
-        return (
-          <div className="mad-section">
-            <button 
-              className="mad-button"
-              onClick={handleMadButtonClick}
-              style={getButtonStyle()}
-            >
-              {buttonText}
-            </button>
-            
-            {showMadSection && (
-              <div className="mad-message">
-                <p>"{section.content.finalMessage}"</p>
-                <div className="cute-gif">
-                  <img 
-                    src={section.content.gifUrl} 
-                    alt={section.content.gifAlt}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-        );
-
+        return renderMadButton(section.content);
       default:
         return null;
     }
@@ -183,7 +196,7 @@ const EasterEggPage = () => {
 
   return (
     <div className="easter-egg-page">
-      <button className="back-button" onClick={() => navigate('/')}>
+      <button className="back-button" onClick={handleBackClick}>
         ← Back
       </button>
 
@@ -193,7 +206,10 @@ const EasterEggPage = () => {
       </header>
 
       {easterEggData.sections.map((section, index) => (
-        <section key={section.id || index} className={`easter-egg-section ${section.type === 'mad-button' ? 'mad-section' : ''} ${section.type === 'video' ? 'video-section' : ''}`}>
+        <section 
+          key={section.id || index} 
+          className={`easter-egg-section ${section.type === 'mad-button' ? 'mad-section' : ''} ${section.type === 'video' ? 'video-section' : ''}`}
+        >
           {section.title && <h2>{section.title}</h2>}
           {renderSection(section)}
         </section>

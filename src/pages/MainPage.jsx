@@ -14,30 +14,36 @@ import iKnewILoveYouImage from '../assets/image/i_knew_ilu.webp';
 import oneFavMemoryImage from '../assets/image/one_fav_memory.webp';
 import baiyaAurBehenImage from '../assets/image/baiya_aur_behen_ka_kahani.webp';
 import iLiveEverydayImage from '../assets/image/i_live_everyday.webp';
+import customThumbnailImage from '../assets/image/thumbnail_love.webp';
 import './MainPage.css';
 
 const timelineData = [
   {
+    id:1,
     image: howWeMetImage,
     title: "How we met",
     content: "Funny how I had no clue that day… that you'd end up meaning so much to me."
   },
   {
+    id:2,
     image: iKnewILoveYouImage,
     title: "When I knew I loved you",
     content: "That smile… yep, that's the main culprit."
   },
   {
+    id:3,
     image: oneFavMemoryImage,
     title: "One of my favorite memory",
     content: "Hands down, playing WWE with you. Nothing beats our goofy battles and your sneaky moves. 😉"
   },
   {
+    id:4,
     image: baiyaAurBehenImage,
     title: "Beiya aur behen ka kahani",
     content: "you as my 'younger sister.' Cute. Innocent. And absolutely the calm before the storm. 😏"
   },
   {
+    id:5,
     image: iLiveEverydayImage,
     title: "No big event, no fancy place",
     content: "If I could hit replay on anything, it'd be any moment I was simply next to you."
@@ -94,7 +100,7 @@ const MainPage = ({ isAudioPlaying, onPauseAudio, onResumeAudio, onToggleAudio }
   const complaintFormRef = useRef();
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const videoRef = useRef(null);
-  const thumbnailUrl = "https://placehold.co/600x400/fdfdff/ff69b4?text=Our+Love+Story";
+  const thumbnailUrl = customThumbnailImage;
 
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -212,7 +218,7 @@ const MainPage = ({ isAudioPlaying, onPauseAudio, onResumeAudio, onToggleAudio }
         <div className="overlay" />
         <div className="hero-content">
           <h1>To the one I love — this is my apology, my promise, and my way of saying I never want to stop showing up for you.</h1>
-          <button className="cta" onClick={() => scrollToSection(storyRef)}>Start Reading ↓</button>
+          <button className="cta" onClick={() => scrollToSection(timelineRef)}>Start Reading ↓</button>
         </div>
       </section>
 
@@ -389,7 +395,7 @@ const MainPage = ({ isAudioPlaying, onPauseAudio, onResumeAudio, onToggleAudio }
               style={{
                 width: '100%',
                 height: '315px',
-                backgroundImage: `url(${thumbnailUrl})`,
+                backgroundImage: `url(${customThumbnailImage})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 cursor: 'pointer',
@@ -410,7 +416,7 @@ const MainPage = ({ isAudioPlaying, onPauseAudio, onResumeAudio, onToggleAudio }
                   transform: 'translate(-50%, -50%)',
                   width: '80px',
                   height: '80px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  background: 'rgba(255, 255, 255, 0.9)',
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
@@ -454,9 +460,13 @@ const MainPage = ({ isAudioPlaying, onPauseAudio, onResumeAudio, onToggleAudio }
           )}
         </div>
         <div className="cta-links">
-          <a href="https://wa.me/+918415014899" target="_blank" rel="noopener" className="cta-btn">💬 Message Me</a>
-          <a href="mailto:donaldth18@gmail.com" className="cta-btn">📧 Email Me</a>
-          <a href="tel:+918415014899" target="_blank" rel="noopener" className="cta-btn">📞 Call me</a>
+          <div className="button-row">
+            <a href="https://wa.me/+918415014899" target="_blank" rel="noopener" className="cta-btn">💬 Message Me</a>
+            <a href="mailto:donaldth18@gmail.com" className="cta-btn">📧 Email Me</a>
+          </div>
+          <div className="single-button">
+            <a href="tel:+918415014899" target="_blank" rel="noopener" className="cta-btn">📞 Call me</a>
+          </div>
         </div>
       </section>
 

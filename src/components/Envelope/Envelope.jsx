@@ -1,24 +1,37 @@
+import React, { useEffect, useRef } from 'react';
+
+// Components
 import EnvelopeSeal from './EnvelopeSeal';
 import Card from '../Card/Card';
+
+// Styles
 import './Envelope.css';
-import { useEffect, useRef } from 'react';
 
 const Envelope = ({ isOpen, onFirstClick, onSecondClick }) => {
+  // Refs
   const openSoundRef = useRef(new Audio('/sounds/envelope-open.wav'));
 
+  // Effects
   useEffect(() => {
     // Set volume for sound
     openSoundRef.current.volume = 0.8;
   }, []);
 
+  // Event handlers
   const handleClick = () => {
     if (!isOpen) {
       onFirstClick();
-      openSoundRef.current.currentTime = 0;
-      openSoundRef.current.play().catch(error => console.log('Error playing sound:', error));
+      playOpenSound();
     } else {
       onSecondClick();
     }
+  };
+
+  const playOpenSound = () => {
+    openSoundRef.current.currentTime = 0;
+    openSoundRef.current.play().catch(error => 
+      console.log('Error playing sound:', error)
+    );
   };
 
   return (
