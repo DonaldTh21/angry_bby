@@ -1,4 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCards } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
 import { BG_IMAGE, MUSIC_URL } from '../constants';
 import emailjs from '@emailjs/browser';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +15,34 @@ import oneFavMemoryImage from '../assets/image/one_fav_memory.webp';
 import baiyaAurBehenImage from '../assets/image/baiya_aur_behen_ka_kahani.webp';
 import iLiveEverydayImage from '../assets/image/i_live_everyday.webp';
 import './MainPage.css';
+
+const timelineData = [
+  {
+    image: howWeMetImage,
+    title: "How we met",
+    content: "Funny how I had no clue that day… that you'd end up meaning so much to me."
+  },
+  {
+    image: iKnewILoveYouImage,
+    title: "When I knew I loved you",
+    content: "That smile… yep, that's the main culprit."
+  },
+  {
+    image: oneFavMemoryImage,
+    title: "One of my favorite memory",
+    content: "Hands down, playing WWE with you. Nothing beats our goofy battles and your sneaky moves. 😉"
+  },
+  {
+    image: baiyaAurBehenImage,
+    title: "Beiya aur behen ka kahani",
+    content: "you as my 'younger sister.' Cute. Innocent. And absolutely the calm before the storm. 😏"
+  },
+  {
+    image: iLiveEverydayImage,
+    title: "No big event, no fancy place",
+    content: "If I could hit replay on anything, it'd be any moment I was simply next to you."
+  }
+];
 
 const MainPage = ({ isAudioPlaying, onPauseAudio, onResumeAudio, onToggleAudio }) => {
   const navigate = useNavigate();
@@ -195,58 +227,36 @@ const MainPage = ({ isAudioPlaying, onPauseAudio, onResumeAudio, onToggleAudio }
       <LoveSpinnerTrigger onClick={() => navigate('/love-spinner')} />
 
       {/* Our Story */}
-      <section className="story" ref={storyRef}>
+      <section ref={timelineRef} id="timeline" className="story">
         <h2>Our Story</h2>
-        <div className="timeline" ref={timelineRef}>
-          <div className="timeline-item">
-            <img 
-              src={howWeMetImage}
-              alt="How we met" 
-            />
-            <div className="timeline-content">
-              <p>
-                <b>How we met</b><br />"Funny how I had no clue that day… that you'd end up meaning so much to me."
-              </p>
-            </div>
-          </div>
-          <div className="timeline-item">
-            <img 
-              src={iKnewILoveYouImage}
-              alt="When I knew I loved you" 
-            />
-            <div className="timeline-content">
-              <p><b>When I knew I loved you</b><br />"That smile… yep, that's the main culprit."</p>
-            </div>
-          </div>
-          <div className="timeline-item">
-            <img 
-              src={oneFavMemoryImage}
-              alt="Our favorite memory" 
-            />
-            <div className="timeline-content">
-              <p><b>One of my favorite memory</b><br />"Hands down, playing WWE with you. Nothing beats our goofy battles and your sneaky moves. 😉"</p>
-            </div>
-          </div>
-          <div className="timeline-item">
-            <img 
-              src={baiyaAurBehenImage}
-              alt="A silly moment" 
-            />
-            <div className="timeline-content">
-              <p><b>Beiya aur behen ka kahani</b><br />"you as my 'younger sister.' Cute. Innocent. And absolutely the calm before the storm. 😏"</p>
-            </div>
-          </div>
-          <div className="timeline-item">
-            <img 
-              src={iLiveEverydayImage}
-              alt="A memory I'd relive 10x" 
-            />
-            <div className="timeline-content">
-              <p><b>No big event, no fancy place</b><br />"If I could hit replay on anything, it'd be any moment I was simply next to you."</p>
-            </div>
-          </div>
+        <div className="timeline-carousel">          <Swiper
+            modules={[EffectCards]}
+            effect="cards"
+            grabCursor={true}
+            className="memory-swiper"
+            cardsEffect={{
+              slideShadows: false,
+              perSlideRotate: 4,
+              perSlideOffset: 8,
+            }}
+          >
+            {timelineData.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="timeline-item">
+                  <img 
+                    src={item.image}
+                    alt={item.title} 
+                  />
+                  <div className="timeline-content">
+                    <p>
+                      <b>{item.title}</b><br />"{item.content}"
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
-        <button className="section-nav" onClick={() => scrollToSection(sorryRef)}>Next: I'm Sorry ↓</button>
       </section>
 
       {/* I'm Sorry */}
@@ -568,4 +578,4 @@ const MainPage = ({ isAudioPlaying, onPauseAudio, onResumeAudio, onToggleAudio }
   );
 };
 
-export default MainPage; 
+export default MainPage;

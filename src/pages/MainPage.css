@@ -52,143 +52,272 @@
 }
 
 /* Timeline styles */
-.timeline {
-  max-width: 800px;
+.timeline-carousel {
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.memory-swiper {
+  width: 100%;
+  padding:0;
 }
 
 .timeline-item {
-  margin-bottom: 2rem;
-  padding: 1rem;
+  width: 100%;
+  max-width: 600px;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(139, 90, 90, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  margin: 0 auto;
+}
+
+.timeline-item img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+  transition: transform 0.3s ease;
 }
 
 .timeline-content {
-  padding: 1rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
 }
 
 .timeline-content p {
   margin: 0;
   font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
 }
 
-/* Section styles */
-section {
-  padding: 4rem 2rem;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Hero section */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  padding: 2rem;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-/* Buttons */
-.cta, .section-nav {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 25px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Crimson Pro', serif;
-}
-
-.cta:hover, .section-nav:hover {
-  background: #c0392b;
-  transform: translateY(-2px);
-}
-
-/* Love Letters */
-.letter-card {
-  font-family: 'Crimson Pro', serif;
-}
-
-.letter-card h3 {
+.timeline-content b {
+  display: block;
+  font-size: 1.4rem;
+  color: #8B5A5A;
+  margin-bottom: 1rem;
   font-family: 'retrouvailles', serif;
 }
 
-/* Complaints section */
-.complaint-section {
-  font-family: 'Crimson Pro', serif;
+/* Navigation styles */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #8B5A5A;
+  background: rgba(255, 255, 255, 0.9);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(139, 90, 90, 0.2);
 }
 
-.complaint-input,
-.complaint-type,
-.complaint-submit {
-  font-family: 'Crimson Pro', serif;
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #8B5A5A;
+  color: white;
 }
 
-/* Future section */
-.goals-list li {
-  font-family: 'Crimson Pro', serif;
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px;
 }
 
-.goal-form input {
-  font-family: 'Crimson Pro', serif;
+.swiper-pagination-bullet {
+  background: #8B5A5A;
+  opacity: 0.5;
 }
 
-/* Love Note section */
-.love-text {
-  font-family: 'Crimson Pro', serif;
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #8B5A5A;
 }
 
-/* Footer */
-.main-footer {
-  font-family: 'Crimson Pro', serif;
+/* Hide Swiper shadows */
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right,
+.swiper-slide-shadow-top,
+.swiper-slide-shadow-bottom {
+  display: none !important;
+  background-image: none !important;
 }
 
-/* Responsive design */
+/* Media queries */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
+  .timeline-carousel {
+    padding: 20px 10px;
   }
   
-  h2 {
-    font-size: 1.75rem;
+
+
+  .timeline-item {
+    max-width: 450px;
+  }
+
+  .timeline-item img {
+    height: 280px;
+  }
+
+  .timeline-content {
+    padding: 1.5rem;
+  }
+
+  .timeline-content b {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-carousel {
+    padding: 15px 5px;
+  }
+
+  .timeline-item {
+    max-width: 280px;
+  }
+
+  .timeline-item img {
+    height: 200px;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+  }
+
+  .timeline-content b {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+}
+
+
+
+/* Responsive design */
+/* iPad/Tablet specific styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .timeline {
+    max-width: 90vw;
+    padding: 15px;
+    gap: 2rem;
+    grid-template-columns: 1fr; /* Single column for better readability */
   }
   
   .timeline-item {
-    padding: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  section {
-    padding: 2rem 1rem;
+  .timeline-item img {
+    height: 400px; /* Larger images for tablet */
+    margin-bottom: 1.5rem;
   }
-} 
+  
+  .timeline-content {
+    padding: 1rem 1.5rem;
+  }
+  
+  .timeline-content p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+  }
+  
+  .timeline-content b {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .timeline {
+    max-width: 100%;
+    padding: 10px;
+    gap: 1rem;
+  }
+  
+  .timeline-item {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .timeline-item img {
+    height: 250px;
+  }
+  
+  .timeline-content {
+    padding: 0.5rem;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: min(1400px, 90vw);
+    gap: 2.5rem;
+  }
+  
+  .timeline-item {
+    margin-bottom: 0;
+  }
+}
+
+/* Additional responsive styles for timeline carousel */
+@media (max-width: 768px) {
+
+  
+
+  .timeline-item {
+    max-width: 100%;
+  }
+
+  .timeline-item img {
+    height: 300px;
+  }
+
+  .timeline-content {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+
+  .timeline-item {
+    max-width: 300px;
+  }
+
+  .timeline-item img {
+    height: 250px;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+
+  .timeline-item {
+    max-width: 600px;
+  }
+}
